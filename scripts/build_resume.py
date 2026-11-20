@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / ".resume-tools"))
 
 import markdown
+from markdown.extensions.toc import slugify_unicode
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A4
@@ -28,7 +29,6 @@ from reportlab.platypus import (
     BaseDocTemplate,
     Frame,
     HRFlowable,
-    KeepTogether,
     PageTemplate,
     Paragraph,
 )
@@ -53,9 +53,14 @@ li { padding-left: 2px; margin-bottom: 7px; }
 a { color: #12647b; text-decoration: none; overflow-wrap: anywhere; }
 a:hover { text-decoration: underline; }
 strong { font-weight: 700; }
+details { margin: 16px 0 20px; color: var(--muted); }
+summary { width: fit-content; color: var(--accent); cursor: pointer; }
+.toc { padding: 0 12px; border-left: 2px solid #d5e0e7; }
+.toc li { margin: 1px 0; }
 @media (max-width: 680px) { main { margin: 0; padding: 26px 22px; } }
 @page { size: A4; margin: 16mm 17mm; }
 @media print {
+  details { display: none; }
   body { font-size: 10pt; line-height: 1.65; background: white; }
   main { max-width: none; margin: 0; padding: 0; box-shadow: none; }
   h1 { font-size: 23pt; } h1 + p, h2 { font-size: 13pt; } h3 { font-size: 11pt; }
@@ -132,18 +137,8 @@ def styles() -> dict[str, ParagraphStyle]:
 def make_flowables(text: str) -> list:
     st = styles()
     flow = []
-    group = []
-    pending_section = []
-    active_group = False
     next_meta = False
     next_role = False
-
-    def flush() -> None:
-        nonlocal group, active_group
-        if group:
-            flow.append(KeepTogether(group))
-            group = []
-        active_group = False
 
     for line in text.splitlines():
         line = line.strip()
@@ -151,20 +146,15 @@ def make_flowables(text: str) -> list:
             continue
         line = re.sub(r"\s*·\s*\[[^\]]+\]\((?:\./)?resume\.pdf\)", "", line)
         if line.startswith("### "):
-            flush()
-            active_group = True
-            group.extend(pending_section)
-            pending_section = []
-            group.append(Paragraph(inline(line[4:]), st["project"]))
+            flow.append(Paragraph(inline(line[4:]), st["project"]))
             next_meta = True
             continue
         if line.startswith("## "):
-            flush()
-            pending_section = [Paragraph(inline(line[3:]), st["section"])]
+            flow.append(Paragraph(inline(line[3:]), st["section"]))
             rule = HRFlowable(width="100%", thickness=.5,
                               color=colors.HexColor("#d5e0e7"), spaceAfter=4)
             rule.keepWithNext = True
-            pending_section.append(rule)
+            flow.append(rule)
             next_meta = False
             continue
         if line.startswith("# "):
@@ -175,16 +165,31 @@ def make_flowables(text: str) -> list:
             flow.append(Paragraph(inline(line), st["role"]))
             next_role = False
             continue
-        target = group if active_group else flow
-        target.extend(pending_section)
-        pending_section = []
         if line.startswith("- "):
-            target.append(Paragraph(inline(line[2:]), st["bullet"], bulletText="•"))
+            flow.append(Paragraph(inline(line[2:]), st["bullet"], bulletText="•"))
         else:
-            target.append(Paragraph(inline(line), st["meta"] if next_meta else st["body"]))
+            flow.append(Paragraph(inline(line), st["meta"] if next_meta else st["body"]))
         next_meta = False
-    flush()
     return flow
+
+
+class ResumeDocument(BaseDocTemplate):
+    """Give the long resume a navigable outline in PDF readers."""
+
+    def beforeDocument(self) -> None:
+        self.heading_count = 0
+
+    def afterFlowable(self, flowable) -> None:
+        if not isinstance(flowable, Paragraph):
+            return
+        levels = {"section": 0, "project": 1}
+        level = levels.get(flowable.style.name)
+        if level is None:
+            return
+        self.heading_count += 1
+        key = f"heading-{self.heading_count}"
+        self.canv.bookmarkHorizontalAbsolute(key, self.frame._y + flowable.height)
+        self.canv.addOutlineEntry(flowable.getPlainText(), key, level=level, closed=True)
 
 
 def footer(canvas, doc) -> None:
@@ -205,7 +210,16 @@ def main() -> None:
     name = name_line.removeprefix("# ").split("·", 1)[0].strip()
     role = role_line.strip("*").removeprefix("求职方向｜")
     title = f"{name} · {role}"
-    markup = markdown.markdown(text, extensions=["extra"])
+    converter = markdown.Markdown(
+        extensions=["extra", "toc"],
+        extension_configs={"toc": {"toc_depth": "2-3", "slugify": slugify_unicode}},
+    )
+    markup = converter.convert(text)
+    index = (
+        '<details><summary>按项目浏览完整简历</summary>'
+        f'<nav aria-label="简历目录">{converter.toc}</nav></details>'
+    )
+    markup = markup.replace("<h2 ", index + "<h2 ", 1)
     (ROOT / "resume.html").write_text(
         '<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1">'
@@ -215,7 +229,7 @@ def main() -> None:
     )
     register_fonts()
     target = ROOT / "resume.pdf"
-    doc = BaseDocTemplate(
+    doc = ResumeDocument(
         str(target), pagesize=A4, leftMargin=17 * mm, rightMargin=17 * mm,
         topMargin=15 * mm, bottomMargin=19 * mm,
         title=title, author="Zirui Qiu", subject="求职简历", pageCompression=1,
