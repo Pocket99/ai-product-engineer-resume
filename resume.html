@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>仇子睿 · AI 应用 / Agent / 全栈产品开发</title><style>
+:root { color-scheme: light; --ink: #172337; --muted: #536477; --accent: #166a82; }
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: #edf1f5;
+  font: 15px/1.8 'Microsoft YaHei', 'PingFang SC', 'Noto Sans CJK SC', sans-serif; }
+main { max-width: 930px; margin: 28px auto; padding: 46px 58px;
+  background: white; box-shadow: 0 8px 32px #1723370d; }
+h1 { font-size: 30px; line-height: 1.3; margin: 0 0 12px; letter-spacing: .5px; }
+h2 { color: var(--accent); font-size: 19px; border-bottom: 1px solid #d5e0e7;
+  margin: 28px 0 14px; padding-bottom: 7px; }
+h3 { font-size: 17px; line-height: 1.6; margin: 22px 0 7px; break-after: avoid; }
+h3 + p { font-size: 13px; color: var(--muted); margin-top: 0; }
+p { margin: 9px 0; }
+ul { padding-left: 21px; margin: 9px 0 14px; }
+li { padding-left: 2px; margin-bottom: 7px; }
+a { color: #12647b; text-decoration: none; overflow-wrap: anywhere; }
+a:hover { text-decoration: underline; }
+strong { font-weight: 700; }
+@media (max-width: 680px) { main { margin: 0; padding: 26px 22px; } }
+@page { size: A4; margin: 16mm 17mm; }
+@media print {
+  body { font-size: 10pt; line-height: 1.65; background: white; }
+  main { max-width: none; margin: 0; padding: 0; box-shadow: none; }
+  h1 { font-size: 23pt; } h2 { font-size: 13pt; } h3 { font-size: 11pt; }
+  h3 + p { font-size: 9pt; } li { break-inside: avoid; }
+}
+</style></head><body><main><h1>仇子睿 · Zirui Qiu</h1>
+<p><strong>AI 应用工程师 / Agent 应用开发 / 全栈产品工程师</strong></p>
+<p><a href="https://ziruiqiu.com/zh-CN/#contact">个人作品集与联系方式</a> · <a href="https://github.com/Pocket99">GitHub</a> · <a href="./resume.pdf">下载完整 PDF</a></p>
+<p>在群核科技参与 Coohom AI Studio、AI 商业化和多团队协作开发，具备 React / TypeScript、Python、Java / Spring Boot 与 Rust 跨栈实践。独立开发 AI 桌面产品《咪咪咪》，打通模型交互、可编辑记忆、按量计费和官网销售；另有 3D 编辑、离线渲染及电商产品开发经历。计算机科学硕士，以第一作者发表两篇医学影像研究。</p>
+<h2>技术能力</h2>
+<ul>
+<li><strong>AI 应用：</strong> LLM API 接入、提示词与上下文组织、结构化输出校验、用户记忆管理、生成失败恢复、token 成本核算、Coding Agent 工作流。</li>
+<li><strong>产品与前端：</strong> React、TypeScript、JavaScript、Three.js、Pixi.js、Fabric.js；微前端集成、iframe 通信、移动端适配、SSR、多语言与业务埋点。</li>
+<li><strong>服务与客户端：</strong> Python / Flask / FastAPI、Java / Spring Boot、Rust / Tauri、SQLite；Stripe Checkout、Webhook、订阅权益、多租户身份与异步任务。</li>
+<li><strong>交付与验证：</strong> Git、CI/CD、Docker、AWS EC2、Nginx；Playwright、Jest / Node 测试、Java 定向回归；计算机视觉、多任务学习与模型可解释性实验。</li>
+</ul>
+<h2>工作经历</h2>
+<h3>群核科技（酷家乐 / Coohom）｜AI 全栈开发工程师</h3>
+<p>2025.08 — 至今 · 离职通知期，预计 2027.01 结束</p>
+<ul>
+<li>参与 AI 生图、AI 建模与设计工作台的产品化开发，推进 AI Studio 工具整合、统一资产及移动端体验，连接生成工具、用户身份、权益与购买入口。</li>
+<li>负责订阅账户、Pricing 和团队协作中的具体功能，跨前端微应用与 Java 服务处理双会员展示、支付域隔离、多团队邀请及资源复制。</li>
+<li>基于需求、代码和实际页面建立验证记录，处理异步竞态、旧协议兼容和跨仓发布依赖；沉淀 Coding Agent 辅助研发流程。</li>
+</ul>
+<h3>Think Surgical｜软件工程实习生</h3>
+<p>加拿大蒙特利尔 · 2024.04 — 2025.05</p>
+<ul>
+<li>使用 React、FastAPI 开发医疗软件 Web 功能，设计 SQLite 数据访问层，连接前端操作与后端数据处理。</li>
+<li>使用 Playwright 为用户操作流程编写端到端测试，以 Docker 镜像交付应用。</li>
+</ul>
+<h3>思必驰 AISpeech｜研发实习生</h3>
+<p>中国苏州 · 2021.04 — 2021.08</p>
+<ul>
+<li>在 Linux 环境使用 C/C++ 将 RNN-T 语音识别模型和规则对话引擎接入智能家居与移动应用，参与模型微调及性能验证。</li>
+</ul>
+<h2>项目经历</h2>
+<h3>01 · Coohom AI Studio｜AI 工具整合与产品化</h3>
+<p>企业项目 · 2026.11 · React / TypeScript / Nunjucks / iframe / 微前端</p>
+<ul>
+<li>开发 AI Studio 页面外壳、工具路由与统一图片/模型资产入口，以受控 iframe 复用现有 AI Image 与 AI Modeler，统一导航、主题和登录体验，沿用工具原有生成、任务及权益服务。</li>
+<li>将公开首页与受保护工具区分开：首页使用服务端模板提供可抓取内容，登录及空间身份满足条件后再加载工具；处理账号过期、空间切换和旧实例消息，避免旧身份继续访问私有内容。</li>
+<li>接入既有 AI 套餐及 Credits 购买组件，处理弹窗加载、关闭、迟到回调和支付后刷新，复用现有结算链路；让用户在 Studio 中完成工具使用与购买入口衔接。</li>
+<li>对齐父页面与工具的默认主题和入口行为，保留 canonical、hreflang 与多语言内容；在 SIT 实际验证首页、AI 生图及 AI 建模三条入口。</li>
+</ul>
+<h3>02 · 咪咪咪｜具备记忆与计费能力的 AI 桌面产品</h3>
+<p>独立开发 · 2026.08 起 · React / Pixi.js / Tauri / Rust / Python / SQLite / DeepSeek / Stripe</p>
+<p><a href="https://mimimi.ziruiqiu.com/">产品官网</a></p>
+<ul>
+<li>独立开发桌面养成与剧情交互产品，将当前场景、玩家选择、近期对话及已确认记忆组织为模型上下文；接入 DeepSeek 生成角色对白和玩家主动请求的活动回顾。</li>
+<li>设计“模型建议、规则执行”的交互机制：模型返回结构化关系变化建议，由 Rust 规则层校验并更新权威游戏状态；奖励与命令去重，防止重试导致重复结算。</li>
+<li>实现玩家可确认、编辑和删除的记忆管理，以 SQLite 持久化存档；用上下文代次和记忆版本校验异步结果，阻止已删除记忆被迟到响应写回。</li>
+<li>分离玩家点数与模型供应商成本账本：调用前预留额度，成功后结算、失败释放玩家预留；记录真实 token 用量，对无法确认的供应商费用保留预留状态，支持单次请求上限与人工停用。</li>
+<li>自建账号与官网商店，接入 Stripe Checkout、Webhook 验签、查单和点数履约；同一操作重放不重复请求模型或扣点，服务端核验游戏使用权，点数耗尽后仍可使用基础养成内容。</li>
+<li>接入 11 种游戏语言，统一界面、桌宠、托盘及新 AI 请求语言；已开放海外商店与 Apple Silicon Mac beta 下载。Windows 已有开发构建记录；公开发行范围以官网发行清单为准。</li>
+</ul>
+<h3>03 · AI / Design 双订阅与支付域隔离</h3>
+<p>企业项目 · 2026.10 — 2026.11 · React / TypeScript / 微前端 / 订阅生命周期</p>
+<ul>
+<li>在账号中心、头像面板、支付微应用和 AI 入口接入 AI / Design 独立会员信息，按生效时间、到期时间及取消状态判断有效权益，兼容缺少新字段的历史接口响应。</li>
+<li>分离商品域、租户身份与空间类型，避免个人 Elite 的 Team 型商品被误判为团队空间；按服务端实际可购结果分流套餐与 Credits 入口，保留旧会员兼容路径。</li>
+<li>将订阅详情、账单、换卡、恢复及支付后刷新绑定到正确业务域；对共享换卡调用增加必填类型约束，补齐 Team、旧 API C 和个人旧协议入口遗漏的域参数。</li>
+<li>处理双会员独立展示、待生效计划、请求乱序与刷新失败；同空间重查失败保留已确认身份、清除不可确认的购买能力。换卡域修复完成 121 项本地回归；相关边界以实际接口调用断言验证。</li>
+</ul>
+<h3>04 · 多团队 Pricing｜购买身份与取消恢复</h3>
+<p>企业项目 · 2026.11 · React / TypeScript / 身份切换 / 支付集成</p>
+<ul>
+<li>根据团队所有者身份与有效会员状态计算购买动作，将“本人拥有的团队”“加入的团队”“当前浏览空间”分别处理；卡片与权益对比共用资格规则，保留服务端最终可购判断。</li>
+<li>串联团队空间到个人付款身份的切换与购买意图恢复，保存短期会话参数并复核身份；取消付款时按原空间标识返回对应团队，避免用户被留在错误空间。</li>
+<li>处理关闭与成功回调同轮触发的竞态，保证成功回调优先、重复关闭只恢复一次；在 SIT 验证两个团队取消付款后的各自恢复，以及个人入口关闭后的身份保持。</li>
+<li>为购买提示接入 18 条多语言词条，按当前语言解析并支持团队名插值；接入后端已提供的空间接口，保持前后端职责边界。</li>
+</ul>
+<h3>05 · AI Studio 移动端与 3D 资产交互</h3>
+<p>企业项目 · 2026.11 · React / TypeScript / Three.js / 响应式布局</p>
+<ul>
+<li>改造 AI Studio 手机端导航、图片/模型混排资产列表及详情操作，在同一产品中承接桌面与移动使用场景；图片快捷操作可选择对应模板并携带来源图。</li>
+<li>实现模型列表内 3D 预览和旋转交互，进入视区时挂载、离开时释放，首帧绘制前保留封面；区分生成、入库与可预览状态，按真实模型地址和任务进度更新界面。</li>
+<li>完成移动全屏模型取景、下载格式与更多操作面板，核对 430px 手机详情及 1280px 桌面详情。该轮全仓 661 项 Node 回归通过，最新记录对应提交的远端 CI 成功。</li>
+</ul>
+<h3>06 · 多团队邀请与跨空间通知</h3>
+<p>企业项目 · 2026.10 · Java / Spring Boot / React / TypeScript</p>
+<ul>
+<li>联动账号服务、SaaS 服务和邀请弹窗，将全局“已在其他团队”限制调整为目标团队成员关系校验，让已注册用户可被邀请加入不同团队。</li>
+<li>前端兼容旧响应并保留格式、重复和注册状态校验；后端在实际提交时完成目标团队重复成员检查，避免将前端预校验作为最终权限依据。</li>
+<li>将站内通知分发到个人及各团队影子账号并去重，邮箱仅发送一封；空间查询异常时保留个人通知。完成 47 项前后端定向测试与两项 Spring 服务本机启动验证。</li>
+</ul>
+<h3>07 · 团队私有模型复制｜异步任务与数据语义</h3>
+<p>企业项目 · 2026.11 · Java / 异步任务 / 资源归属 / 向后兼容</p>
+<ul>
+<li>沿 SaaS 入口、商品中台任务、复制处理器和持久化链路定位模型复制后创建时间被重置的问题，为指定团队私库复制增加显式时间保留策略。</li>
+<li>将策略随异步任务传递，仅应用于已知业务来源及对应私库复制方向；保留普通复制、自定义库、授权复制的原有创建时间和目标归属语义。</li>
+<li>保持既有方法签名与子类分派，补充任务到复制器的回归，覆盖授权、删除商品、多文件夹、账号隔离及任务进度。完成代码交付与 CI 验证，环境验收仍待完成。</li>
+</ul>
+<h3>08 · 团队 AI 工具准入与 Credits 管理</h3>
+<p>企业项目 · 2026.10 — 2026.11 · React / TypeScript / 权限控制</p>
+<ul>
+<li>将 AI 生图、建模与布局工具接入团队侧栏，组合总权限、单项权限、黑名单和既有菜单配置；保留企业与个人空间的独立规则，并复用团队 Owner 的邀请能力。</li>
+<li>调整团队资源分组展示时保留祖先及子项权限，补充深链接选中、折叠态和异步响应回归，避免视觉重组扩大可访问范围。</li>
+<li>将 Coohom 成员 Credits 限额从千倍数调整为正整数，保留部门及其他站点原有约束；在 SIT 保存并回读 1、1234 等额度，验证切换部门后的原规则。</li>
+</ul>
+<h3>09 · 设计方案分享｜链接竞态与订阅承接</h3>
+<p>企业项目 · 2026.09 — 2026.10 · React / TypeScript / 异步状态管理</p>
+<ul>
+<li>对齐工作台与方案列表的团队分享行为，默认选中 Edit 时同步正确链接、密码及有效期，避免展示编辑权限却复制查看链接。</li>
+<li>复现快速切换 View / Edit 引发的重复生成与响应覆盖，按分享类型合并在途请求；失败释放后可重试，迟到响应只在当前详情匹配时更新，卸载后停止通知。</li>
+<li>统一普通、宽限及到期场景的 Team 购买入口并保留来源归因；完成两仓共 63 项回归，覆盖重复请求、乱序响应和组件卸载。</li>
+</ul>
+<h3>10 · 商业化入口实验与国际化交付</h3>
+<p>企业项目 · 2026.10 — 2026.11 · React / TypeScript / A/B 分桶 / i18n</p>
+<ul>
+<li>为设计工具头像 Credits 入口和图纸下载付费入口实现实验分桶，统一一次交互内的渲染、曝光和点击版本；处理实验配置迟到及未知版本回退。</li>
+<li>跨工具、升级卡点、支付包装层和结算微应用透传入口及当前图名，沿用真实商品价格和原支付成功回调，支持按来源分析购买路径。</li>
+<li>处理印度卢比完整金额展示及共享组件的宿主文案隔离，复用现有国际化运行时；在新词条、语言包和译文关联回读后接入代码，避免影响其他宿主。</li>
+</ul>
+<h3>11 · Velto｜离线 3D 编辑与渲染桌面软件</h3>
+<p>独立开发 · 2026.10 · Tauri / Rust / React / Three.js / Python / SQLite / Blender Cycles</p>
+<ul>
+<li>开发房间与家具编辑器，支持俯视/三维切换、拖动吸附、撤销重做、实例换色及 GLB / glTF 导入，使用 SQLite 管理商品名称、SKU 和分类。</li>
+<li>设计自包含工程包，将模型与纹理纳入项目资源，提供本地保存与自动恢复；以结构化 NDJSON 协议连接桌面端和 Python worker。</li>
+<li>将 Blender / Cycles 作为独立渲染进程，管理校验、准备、渲染、取消及超时状态；校验退出码、图片解码与尺寸后发布结果，并生成中文 PDF。</li>
+<li>完成本机安装、启动、CPU / GPU 出图和卸载重装验证。20 实例、3060 三角形样本下，三项交互 p95 均为 4.3 ms；该数据限定于已测样本。当前为本机验证版本。</li>
+</ul>
+<h3>12 · YCH-YOYO / Loop Infinity｜3D 定制与交易平台</h3>
+<p>全栈开发负责人 · 2025.01 起 · React / Fabric.js / Three.js / Flask / Stripe / AWS EC2</p>
+<p><a href="https://ych-yoyo.com/custom-design">产品与定制入口</a></p>
+<ul>
+<li>开发浏览器图案编辑与 3D 预览工具，让玩家在线完成设计并提交定制需求，连接后续审核及生产进度跟踪。</li>
+<li>使用 React、Flask 和 Stripe Checkout 打通商品、付款及订单后台，并部署至 AWS EC2，覆盖面向消费者的展示和后台管理。</li>
+<li>开发比赛视频评分工具，支持沿时间轴标记得失分和回看对应动作，将视频播放与评分记录关联。</li>
+</ul>
+<h3>13 · Coding Agent 辅助研发工作流</h3>
+<p>企业研发实践 · Coding Agent / 需求与代码分析 / 国际化 / 验证记录</p>
+<ul>
+<li>编写可复用的 Agent 技能与流程，从需求事项和代码提交整理周报，并将文案同步、代码审查及发布检查串联到日常开发。</li>
+<li>在具体交付中结合跨仓影响分析、隔离工作区、回归测试及页面验证，记录需求、提交、环境版本和实际结果，支持问题定位与任务接续。</li>
+</ul>
+<h2>教育与研究</h2>
+<p><strong>康考迪亚大学（Concordia University）</strong> · 加拿大蒙特利尔</p>
+<p>计算机科学硕士 · 2022 — 2024；计算机工程学士 · 2017 — 2022</p>
+<h3>14 · 胸片诊断与放射科医生注视预测</h3>
+<p>第一作者 · Medical Physics，2025 · 多任务学习 / 对比学习 / 计算机视觉</p>
+<ul>
+<li>提出双编码器多任务 UNet，将 DenseNet201 与残差及 Squeeze-and-Excitation 编码器结合，同时预测胸片诊断结果和医生注视显著图。</li>
+<li>采用多阶段协同学习与对比学习预训练，处理不同任务的训练节奏差异；论文实验中诊断 AUC 为 0.93，注视预测相关系数为 0.58。</li>
+</ul>
+<p><a href="https://pubmed.ncbi.nlm.nih.gov/40665596/">论文：Joint enhancement of automatic chest x-ray diagnosis and radiological gaze prediction with multistage cooperative learning</a></p>
+<h3>15 · Grad-CAM 可解释性可靠性评估</h3>
+<p>第一作者 · MLMI，2023 · 模型评估 / 可解释性 / 医学影像</p>
+<ul>
+<li>以胸片气胸识别为任务，对比不同深度与架构的诊断表现和 Grad-CAM 解释效果，评估热图可靠性与网络结构之间的关系。</li>
+<li>实验发现更深网络并不必然显著改善诊断准确性，解释效果亦随架构变化；以对照实验分析模型预测与解释质量。</li>
+</ul>
+<p><a href="https://arxiv.org/abs/2308.15172">论文：Is visual explanation with Grad-CAM more reliable for deeper neural networks?</a></p></main></body></html>
